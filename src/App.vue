@@ -27,9 +27,13 @@
   import {ref, computed, onMounted} from 'vue'
   import {useToast} from 'vue-toastification'
 
-  const toast = useToast()
-  const transactions = ref([]);
+  const toast = useToast() // intialize toast
+
+  const transactions = ref([]); // reactive? variable for transaction, basta yung nagbabago
+
+  // load transactions from local storage on component mount
   onMounted(() =>{
+    // retrieve the 'transactions' data from local storage and parse it into a js object
     const savedTransactions = JSON.parse(localStorage.getItem('transactions'))
     
     if(savedTransactions){
@@ -41,7 +45,7 @@
   // get total
   const total = computed(() => {
     return transactions.value.reduce((acc, transaction) => {
-      return acc + transaction.amount;
+      return acc + transaction.amount; // pwede din for -value since positive + negative will just subtract
     }, 0);
   });
 

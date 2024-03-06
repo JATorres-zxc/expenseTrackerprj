@@ -1,0 +1,17 @@
+components/addTransaction.vue:
+    Manages the form for adding new transactions and emits a custom event with transaction data upon submission.
+
+components/balance.vue:
+    Displays the current balance based on the sum of all transactions.
+
+components/header.vue:
+    Provides a simple header component for the application.
+
+components/incomeExpenses.vue:
+    Displays a summary of income and expenses.
+
+components/transactionList.vue:
+    Lists all transactions, allowing users to delete them, and emits events for transaction deletion.
+
+app.vue:
+    Integrates other components to create the layout and handles transaction-related logic, such as adding, deleting, and saving transactions to local storage.

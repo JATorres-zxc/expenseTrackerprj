@@ -22,27 +22,28 @@
 
 <script setup>
     import { ref } from 'vue'
-    import {useToast} from 'vue-toastification'
+    import {useToast} from 'vue-toastification' // for toast message
 
-    const text = ref('')
-    const amount = ref('')
-    const toast = useToast()
-    const emit = defineEmits(['transactionSubmitted'])
+    const text = ref('') // store text input 
+    const amount = ref('') // store amount input
+    const toast = useToast() // initialize toast function
+    const emit = defineEmits(['transactionSubmitted']) // custom event
 
+    // function handle form submission
     const onSubmit = () => {
-        if(!text.value || !amount.value){
-            toast.error('Both fields (Text and Amount) MUST be filled')
+        if(!text.value || !amount.value){ // to check if text and amount fields is filled
+            toast.error('Both fields (Text and Amount) MUST be filled') // error toast if something is empty
             return
         }
         // console.log(text.value, amount.value)   
-        const transactionData = {
+        const transactionData = { // create transaction data object which is the text and amount
             text: text.value,
             amount: parseFloat(amount.value)
         }
 
-        emit('transactionSubmitted', transactionData)
+        emit('transactionSubmitted', transactionData) // emit custom event 
         
-
+        // then clear again
         text.value = ''
         amount.value = ''
     };
